@@ -1,0 +1,94 @@
+-o prompt bash do git e um terminal de comandos onde vc controla o diretorio
+-ao iniciar um repositiro vc cria uma pasta .git invisivel dentro da pasta que e resposavel por linkar o conteudo da pasta ao repositio git criado
+- ao dar checkout para um commit antigo vc fica desconexo do master "atualizado", para que isso nao aconteça e vc consiga transitar entre as versoes ao dar checkout para a versão antiga vc deve criar uma nova branch dessa forma o codigo antigo fica armazenado na branch
+
+comandos
+
+git config --local user.name "user name"   } ambos os comando faz a configuração de quem esta gerenciando o reositorio no momento
+git config --local user.email "your email" }
+"""""""""" -- global """"""""""""""""""""  } realiza a mesma função acima contudo em um scope global para todos os repositorios
+cd <diretorio de pasta> _ serve para acessar uma pasta do pc denrto do prompt bash do git (voce pode colocar um "." caso o unicio do caminho seja o mesmo
+git init 		_ inicia um repositorio na pasta selecionada atraves do cd
+git status		_ mostra o atual status do repositorio
+git commit -m "message" _ reazliza um commit em um arquivo previamente adicionado a fila juntamente com uma mensagem
+git add <file>		_ adiciona um arquivo especifico untrackeado para a fila de commits
+git add . 		_ adiciona todos os untrecked files para a fila de commits
+clear			_ limpa a tela do terminal
+.gitignore <class exp> 	_ ignore file matching the expresssions,you need to create a file name .gitignore contaning the expressions, for more information append(0.gitignore)
+git log 		_ mostra o historico de commit, tem varias formas para apresentar o historico, para mais formas 			_acessar_https://devhints.io/git-log
+git remote 		_ lista todos os caminhos de repositorio remoto
+git remote add <tag do caminho> <caminho(url/arquivo/...)> _adiciona esse caminho como um reppositorio remoto para armazenar arquivos
+git remote -v		_ lista todos so caminhos remotos, contudo mostrando a tag, o caminho e de onde ele busca e empurra informação
+mkdir			_cria um pasta no atual diretorio
+git clone 		_ clona um repositorio ja existente para outro repositorio
+git ini --bare		_cria um repositorio limpo para que posso ser iniciado um "servidor" remoto
+git pull <remote repo name> <branch name>	_ tras as informaçoes do repositorio remoto para o repositorio local
+git remote rename <old name> <new name>		_ Renomeia a tag do repostiorio remoto
+git branch 		_ lista todas a branchs existentes no repositorio
+git branch <branch name> 	_ cria uma nova branch
+git checkout -b <branch name> 	_ cria e muda para uma nova branch
+git checkout <branch name>	_ muda pra a branch citada
+git merge <branch name>		_ junta a branch que voce esta com a branch indicada<> para salvar o merge apos criado usa-se: ":x [{enter}]"
+git rebase <branch name> 	_ tras as mudanças da branch citada para a branch em que voce esta crinado um novo commit
+git log --graph			_ mostra os commits em variadas branches de forma grafica 
+git checkout -- <file>		_ undo changes made in the file returning to the last commit(chenge the head file)
+git reset HEAD <file>		_ undo changes made in the file retuning to the lanst commit(but dont change the head file) after added the chages to the commit queue
+git revert <commit hash to be reverted>		_ undo a commited change reverting to the last commit and crating one new commit indicating the ravert action
+git stash			_ salva de forma tempóraria mudanças feitas dentro do projeto
+git stash list 			_ mostra a litas de stashes existentes 
+git stash apply <stash number>	_ aplica as mudanças salvas na stash
+git stash drop 	<stash number>	_ deleta uma stash salva
+git stash pop			_ deleta e aplica a ultima informação salva na stash
+git diff <commit hash old>..<taget commit hash>		_ show the diference between an old commit to a newer commit selected
+git diff 			_ shows the changes in the code before adding to the commit queue
+git tag -a <tag name> (caso queira da pra adicionar uma mensagem com -m "" apos a tag name)	_ gera uma tag para determinado ponto no projeto ponto o qual e a atual nocalização da branch
+git tag				_ mostra todas a tags dentro da branch ** tag podem substituir nomes seja de branches seja de commits **
+
+
+
+
+0.gitignore------------------------------------------------------------------------------------------------------------------------------------------
+
+Often, you’ll have a class of files that you don’t want Git to automatically add or even show you as being untracked. These are generally automatically generated files such as log files or files produced by your build system. In such cases, you can create a file listing patterns to match them named .gitignore. Here is an example .gitignore file:
+
+$ cat .gitignore
+*.[oa]
+*~
+The first line tells Git to ignore any files ending in “.o” or “.a” – object and archive files that may be the product of building your code. The second line tells Git to ignore all files whose names end with a tilde (~), which is used by many text editors such as Emacs to mark temporary files. You may also include a log, tmp, or pid directory; automatically generated documentation; and so on. Setting up a .gitignore file before you get going is generally a good idea so you don’t accidentally commit files that you really don’t want in your Git repository.
+
+The rules for the patterns you can put in the .gitignore file are as follows:
+
+Blank lines or lines starting with # are ignored.
+
+Standard glob patterns work.
+
+You can start patterns with a forward slash (/) to avoid recursivity.
+
+You can end patterns with a forward slash (/) to specify a directory.
+
+You can negate a pattern by starting it with an exclamation point (!).
+
+Glob patterns are like simplified regular expressions that shells use. An asterisk (*) matches zero or more characters; [abc] matches any character inside the brackets (in this case a, b, or c); a question mark (?) matches a single character; and brackets enclosing characters separated by a hyphen ([0-9]) matches any character between them (in this case 0 through 9). You can also use two asterisks to match nested directories; a/**/z would match a/z, a/b/z, a/b/c/z, and so on.
+
+Here is another example .gitignore file:
+
+# no .a files
+*.a
+
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
+# ignore all files in the build/ directory
+build/
+
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf
+
+
+1.??-------------------------------------------------------------------------------------------------------------------------------------------------

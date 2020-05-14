@@ -1,0 +1,12 @@
+snake_case para utilizar o python
+
+
+comandos 
+
+print(value,...,sep = "", en = "\n")
+input(value to be shown)	_ pede para que se ja digitado um valor e mostra o valor dentro dos parenteses como um texto guia para q valor digitar, input sempre retorna uma string
+int(value)	_ converte um valor dentro do parenteses para intregral
+if(expression):
+	print("true")
+else:
+	print("false")	_ a espressao if em python se escreve com o dois pontos
